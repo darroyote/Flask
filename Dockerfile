@@ -1,4 +1,5 @@
 FROM python:3.6-alpine AS os_main
+MAINTAINER Daniel Arroyo
 RUN apk update && \
     apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev && \
     apk add --no-cache mariadb-dev
@@ -19,6 +20,7 @@ ARG SERVER_PORT=5000
 ENV SERVER_PORT ${SERVER_PORT}
 ENV USER_NAME=Dani
 
+EXPOSE 5000
 CMD python3 app.py
 
 

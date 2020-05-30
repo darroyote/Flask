@@ -7,10 +7,16 @@ services:
         environment:
           - USER_NAME=Dani
         ports:
-            - "5000:5000"
+          - "5000:5000"
         volumes:
-            - .:/pers
+          - .:/pers
         depends_on:
-            - redis
+          - redis
     redis:
         image: redis
+        restart: always
+        environment:
+                #- ALLOW_EMPTY_PASSWORD=no
+          - REDIS_PASSWORD=redis
+        volumes: 
+          - ./redis-data:/data  
