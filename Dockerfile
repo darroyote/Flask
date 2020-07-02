@@ -7,6 +7,7 @@ RUN apk update && \
 #New app
 FROM os_main AS myapp
 
+
 ADD . /pers
 WORKDIR /pers
 
@@ -20,7 +21,7 @@ ARG SERVER_PORT=5000
 ENV SERVER_PORT ${SERVER_PORT}
 ENV USER_NAME=Dani
 
+COPY . /pers
 EXPOSE 5000
-CMD python3 app.py
-
+CMD ["python", "app.py"] 
 
